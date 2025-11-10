@@ -19,7 +19,6 @@
             </div>
 
             <div class="section-body">
-
                 <div class="card">
                     <form action="{{ route('user.store') }}" method="POST">
                         @csrf
@@ -28,49 +27,35 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text"
-                                    class="form-control @error('name')
-                                    is-invalid
-                                @enderror"
+                                <label>Your Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="name">
-                                @error('name')
-                                    <div class="invalid-feedback">
+                                <div class="invalid-feedback">
+                                    @error('name')
                                         {{ $message }}
-                                    </div>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email"
-                                    class="form-control @error('email')
-                                    is-invalid
-                                @enderror"
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
                                     name="email">
-                                @error('email')
-                                    <div class="invalid-feedback">
+                                <div class="invalid-feedback">
+                                    @error('email')
                                         {{ $message }}
-                                    </div>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password"
-                                    class="form-control @error('password')
-                                    is-invalid
-                                @enderror"
+                                <input type="password" class="form-control @error('password') is-invalid @enderror"
                                     name="password">
-                                @error('password')
-                                    <div class="invalid-feedback">
+                                <div class="invalid-feedback">
+                                    @error('password')
                                         {{ $message }}
-                                    </div>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input type="text" class="form-control" name="phone">
-                            </div>
-
                             <div class="form-group">
                                 <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
@@ -87,8 +72,16 @@
                                         <input type="radio" name="roles" value="mahasiswa" class="selectgroup-input">
                                         <span class="selectgroup-button">Mahasiswa</span>
                                     </label>
-
                                 </div>
+                                <div class="invalid-feedback">
+                                    @error('roles')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" name="phone">
                             </div>
                             <div class="form-group mb-0">
                                 <label>Address</label>
@@ -100,7 +93,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </section>
     </div>

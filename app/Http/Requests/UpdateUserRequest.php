@@ -17,16 +17,16 @@ class UpdateUserRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:80',
-            'email' => 'required|email',
-            'phone' => 'string',
-            'address' => 'string',
-            'roles' => 'string',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email,' . $this->user->id,
+            'roles' => 'required|string',
+            'phone' => 'string|nullable',
+            'address' => 'string|nullable',
         ];
     }
 }

@@ -19,7 +19,6 @@
             </div>
 
             <div class="section-body">
-
                 <div class="card">
                     <form action="{{ route('user.update', $user) }}" method="POST">
                         @csrf
@@ -29,37 +28,25 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text"
-                                    class="form-control @error('name')
-                                    is-invalid
-                                @enderror"
+                                <label>Your Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="name" value="{{ $user->name }}">
-                                @error('name')
-                                    <div class="invalid-feedback">
+                                <div class="invalid-feedback">
+                                    @error('name')
                                         {{ $message }}
-                                    </div>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email"
-                                    class="form-control @error('email')
-                                    is-invalid
-                                @enderror"
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
                                     name="email" value="{{ $user->email }}">
-                                @error('email')
-                                    <div class="invalid-feedback">
+                                <div class="invalid-feedback">
+                                    @error('email')
                                         {{ $message }}
-                                    </div>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input type="text" class="form-control" name="phone" value="{{ $user->phone }}">
-                            </div>
-
                             <div class="form-group">
                                 <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
@@ -78,14 +65,20 @@
                                             @if ($user->roles == 'mahasiswa') checked @endif>
                                         <span class="selectgroup-button">Mahasiswa</span>
                                     </label>
-
                                 </div>
+                                <div class="invalid-feedback">
+                                    @error('roles')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" name="phone" value="{{ $user->phone }}">
                             </div>
                             <div class="form-group mb-0">
                                 <label>Address</label>
-                                <textarea class="form-control" data-height="150" name="address">
-                                    {{ $user->address }}
-                                </textarea>
+                                <textarea class="form-control" data-height="150" name="address">{{ $user->address }}</textarea>
                             </div>
                         </div>
                         <div class="card-footer text-right">
@@ -93,7 +86,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </section>
     </div>
